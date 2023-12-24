@@ -1,0 +1,100 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+    id 'jacoco'
+    id 'org.sonarqube' version '2.8'
+}
+
+group = 'com.general'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', "2021.0.5")
+    set('awsSpringCloudVersion', "2.3.0")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.1.12.RELEASE'
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Springfox(swagger)
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+    implementation 'io.swagger:swagger-annotations:1.5.21'
+
+
+	// Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+    //Mapstruct
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
+    //Feign
+    implementation 'io.github.openfeign:feign-okhttp:11.10'
+    implementation 'io.github.openfeign:feign-core:11.10'
+    implementation 'io.github.openfeign:feign-annotation-error-decoder:11.10'
+    implementation 'io.github.openfeign:feign-jackson:11.10'
+
+
+    //QrCode
+    implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.google.zxing:javase:3.3.3'
+
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.10.2'
+    annotationProcessor "javax.xml.bind:jaxb-api:2.3.1"
+    implementation 'commons-configuration:commons-configuration:1.7'
+    implementation 'org.json:json:20180813'
+    implementation 'com.lmax:disruptor:3.4.2'
+    implementation 'javax.mail:mail:1.4'
+    implementation 'org.jeasy:easy-random-core:4.0.0'
+    implementation 'org.apache.commons:commons-collections4:4.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation 'mysql:mysql-connector-java:8.0.15'
+
+
+    configurations.all {
+        exclude module: 'slf4j-log4j12'
+        exclude group: 'ch.qos.logback'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude module: "logback-classic"
+    }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "io.awspring.cloud:spring-cloud-aws-dependencies:${awsSpringCloudVersion}"
+        mavenBom 'software.amazon.awssdk:bom:2.10.91'
+        mavenBom 'com.amazonaws:aws-java-sdk-bom:1.11.845'
+    }
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
