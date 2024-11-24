@@ -14,8 +14,8 @@ import javax.validation.Valid;
 import org.springframework.data.repository.query.Param;
 
 @Api(
-    value = "ecommerce",
-    tags = {"User Controller - All Endpoints"})
+    value = "ecommerce"
+)
 public interface ProductApi {
 
   @ApiOperation(
@@ -36,7 +36,7 @@ public interface ProductApi {
       value = "Get a product.",
       notes = "This endpoint is used to get a product.")
   @ApiResponses({
-    @ApiResponse(code = 201, message = "Created", response = ContractResponse.class),
+    @ApiResponse(code = 200, message = "Ok", response = ContractResponse.class),
     @ApiResponse(code = 400, message = "Bad Request", response = ContractResponse.class),
     @ApiResponse(code = 404, message = "Not Found", response = ContractResponse.class),
     @ApiResponse(code = 500, message = "Internal Server Failure", response = ContractResponse.class)
@@ -49,7 +49,7 @@ public interface ProductApi {
       value = "Delete a product.",
       notes = "This endpoint is used to delete a product.")
   @ApiResponses({
-    @ApiResponse(code = 201, message = "Created", response = ContractResponse.class),
+    @ApiResponse(code = 200, message = "Ok", response = ContractResponse.class),
     @ApiResponse(code = 400, message = "Bad Request", response = ContractResponse.class),
     @ApiResponse(code = 404, message = "Not Found", response = ContractResponse.class),
     @ApiResponse(code = 500, message = "Internal Server Failure", response = ContractResponse.class)

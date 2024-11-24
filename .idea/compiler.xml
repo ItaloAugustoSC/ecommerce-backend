@@ -12,7 +12,7 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.3.1/8531ad5ac454cc2deb9d4d32c40c4d7451939b5d/jaxb-api-2.3.1.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.activation/javax.activation-api/1.2.0/85262acf3ca9816f9537ca47d5adeabaead7cb16/javax.activation-api-1.2.0.jar" />
         </processorPath>
-        <module name="ecommerce.main" />
+        <module name="com.general.ecommerce.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
