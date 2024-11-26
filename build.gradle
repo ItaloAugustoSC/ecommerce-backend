@@ -23,6 +23,7 @@ ext {
 }
 
 dependencies {
+    implementation(platform("software.amazon.awssdk:bom:2.27.21"))
     implementation 'org.springframework.boot:spring-boot-dependencies:2.1.12.RELEASE'
 
 	implementation 'org.springframework.boot:spring-boot-starter'
@@ -73,6 +74,13 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     implementation 'commons-io:commons-io:2.11.0'
     implementation 'com.google.guava:guava:31.1-jre'
+
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.6.RELEASE'
+
+    // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-ses
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-ses'
+
 
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     implementation 'mysql:mysql-connector-java:8.0.15'

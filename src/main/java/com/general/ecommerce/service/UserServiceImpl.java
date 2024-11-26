@@ -2,11 +2,7 @@ package com.general.ecommerce.service;
 
 import com.general.ecommerce.entity.UserEntity;
 import com.general.ecommerce.exception.BadRequestException;
-import com.general.ecommerce.model.request.ChangePasswordRequest;
-import com.general.ecommerce.model.request.CreateUserRequest;
-import com.general.ecommerce.model.request.LoginRequest;
-import com.general.ecommerce.model.request.LogoutRequest;
-import com.general.ecommerce.model.request.ResetPasswordRequest;
+import com.general.ecommerce.model.request.*;
 import com.general.ecommerce.model.response.GetUserResponse;
 import com.general.ecommerce.repository.UserRepository;
 import com.general.ecommerce.service.mapper.UserMapper;
@@ -18,8 +14,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
   @Autowired private UserRepository userRepository;
-
   @Autowired private UserMapper userRequestMapper;
+  @Autowired private EmailService emailService;
 
   @Override
   public void createUser(CreateUserRequest user) {
@@ -32,6 +28,9 @@ public class UserServiceImpl implements UserService {
     UserEntity userEntity = userRequestMapper.map(user);
 
     userRepository.save(userEntity);
+
+    emailService.sendEmail("User created - Ecommerce",
+            "Your user was created successfully!");
   }
 
   @Override
@@ -41,6 +40,9 @@ public class UserServiceImpl implements UserService {
     }
 
     userRepository.deleteById(email);
+
+    emailService.sendEmail("User deleted - Ecommerce",
+            "Your user was deleted successfully!");
   }
 
   @Override
