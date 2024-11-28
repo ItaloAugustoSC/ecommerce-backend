@@ -10,10 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString.Exclude;
 
-/**
- * Hibernate entity for USERS
- *
- */
 @Builder
 @Data
 @AllArgsConstructor

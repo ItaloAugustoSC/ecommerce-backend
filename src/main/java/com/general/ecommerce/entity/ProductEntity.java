@@ -11,7 +11,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/** Hibernate entity for USERS */
 @Builder
 @Data
 @AllArgsConstructor
